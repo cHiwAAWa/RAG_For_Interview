@@ -164,7 +164,7 @@ vr-interview-system/
 4. 在 Assets/Scripts/QuestionReaderWithTTS.cs 中填入 Azure Speech Key (用於 TTS)。
 5. Build 並部署至 Meta Quest 3，或在 Editor 中測試。
 
-##　🧪 測試與驗證
+## 🧪 測試與驗證
 
 * API 測試: 啟動伺服器後，進入 Swagger UI (/docs)，可直接測試 /upload 與 /answer 接口。
 * 服務測試: 執行 uv run scripts/manual_test_services.py 可單獨測試 OCR、STT 與 LLM 邏輯是否正常。
