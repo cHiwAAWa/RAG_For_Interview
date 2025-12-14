@@ -38,7 +38,7 @@ async def upload_resume(file: UploadFile = File(...)):
         return ResumeUploadResponse(
             session_id=session_id,
             job_title=job_title,
-            summary=full_text[:200] + "...",
+            summary=full_text[:1000] + "...",
             structured_data=structured_data
         )
         
