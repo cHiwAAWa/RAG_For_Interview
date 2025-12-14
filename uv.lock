@@ -709,6 +709,7 @@ dependencies = [
     { name = "sqlalchemy" },
     { name = "uvicorn" },
     { name = "werkzeug" },
+    { name = "zh-core-web-sm" },
 ]
 
 [package.metadata]
@@ -732,6 +733,7 @@ requires-dist = [
     { name = "sqlalchemy", specifier = ">=2.0.45" },
     { name = "uvicorn", specifier = ">=0.38.0" },
     { name = "werkzeug", specifier = ">=3.1.4" },
+    { name = "zh-core-web-sm", url = "https://github.com/explosion/spacy-models/releases/download/zh_core_web_sm-3.7.0/zh_core_web_sm-3.7.0-py3-none-any.whl" },
 ]
 
 [[package]]
@@ -1579,6 +1581,33 @@ wheels = [
 ]
 
 [[package]]
+name = "spacy-pkuseg"
+version = "0.0.33"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "srsly" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/35/55/20a2454330e2c31cf356595c8dbc80780d281b580bf0e172af3d45881bbb/spacy_pkuseg-0.0.33.tar.gz", hash = "sha256:f13156ac4e04460f1ac35edfd036e99704dbbad19ad0a39b06c340f802a29e62", size = 2130958, upload-time = "2023-10-01T09:22:33.996Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7e/f0/fea460d0ec67a31b30f8b1a57a58ffc295a333046d9c6566a4a2aa5222c0/spacy_pkuseg-0.0.33-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:7869b18dfd7194b995d15b90a0e9c20e18c9aed023d5971c783f1820c1ff850b", size = 2469557, upload-time = "2023-10-01T09:21:37.793Z" },
+    { url = "https://files.pythonhosted.org/packages/32/5b/aa2b94e25c03f4c301eb4b71f5453f87963bee01ff8d24437d903366d02e/spacy_pkuseg-0.0.33-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:980c2ed7f5e3d2c576ca0cb9cfb490b4db594d595dcd64ed2ecb0e34ddcebd44", size = 2443460, upload-time = "2023-10-01T09:21:39.926Z" },
+    { url = "https://files.pythonhosted.org/packages/6b/e7/f0ec73d7ac152caa7ad292309467a595c99662e4c6b43804d88f1c9d4ca7/spacy_pkuseg-0.0.33-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a8faa09732b053d39a91dc1f0fed8816ea23103017790c8ac362883ce716bc2c", size = 2472852, upload-time = "2023-10-01T09:21:41.92Z" },
+    { url = "https://files.pythonhosted.org/packages/1e/74/252a4af9be89105d2e1822eee98e03cfac662d18667f56882f41b61ad3cb/spacy_pkuseg-0.0.33-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:026ecd1aee5103db2ef3b859ee2cb5370a5e82a36ec812d7d209936ff6106117", size = 2503218, upload-time = "2023-10-01T09:21:43.861Z" },
+    { url = "https://files.pythonhosted.org/packages/54/e6/903ee23009ee368991293b47b01504f2a874d1d345729f223535801cde4d/spacy_pkuseg-0.0.33-cp310-cp310-win_amd64.whl", hash = "sha256:c34371bf43303d7e1d2cb76f53467b03a7c5061e34426b8e15184b49a066ebfa", size = 2401827, upload-time = "2023-10-01T09:21:45.463Z" },
+    { url = "https://files.pythonhosted.org/packages/87/06/8126830d7d5cc7c3858bae422b4fbc137a0596a41ee4df8596df14d1e94c/spacy_pkuseg-0.0.33-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:6d00a91fffdf15cc4c8f4125874a10e883e00cb908db0bfb096ab0b0a4cc8251", size = 2468959, upload-time = "2023-10-01T09:21:47.17Z" },
+    { url = "https://files.pythonhosted.org/packages/2d/52/64b4692503d8e920437c1defa0ba4b94fd8a54f252a070119c6c87cbca52/spacy_pkuseg-0.0.33-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:e866bd32acfe663c90788776e50b1b99c3cb7713dbfbb0458e9888a202f2e2e4", size = 2443406, upload-time = "2023-10-01T09:21:48.707Z" },
+    { url = "https://files.pythonhosted.org/packages/2e/24/4e19049a7e31bd2dcd8a76f6ca9f3f05ef10ff1ff83c76a988e950fa0bd0/spacy_pkuseg-0.0.33-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b267ecc111941f663e4dba3d2f5a3cb4a33901939b4cd03ccafe7a9050588054", size = 2473675, upload-time = "2023-10-01T09:21:50.094Z" },
+    { url = "https://files.pythonhosted.org/packages/fd/3e/35be49add3f5451ebd538db0742973aea895b5b13935221b03839d1123bb/spacy_pkuseg-0.0.33-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:fcf4bf95fb5c73b2352d4f0c5ce7b343ed73b384633f0ec39218df35da87289f", size = 2503623, upload-time = "2023-10-01T09:21:52.053Z" },
+    { url = "https://files.pythonhosted.org/packages/f8/ad/3722ce633e8ef4ffb5a77376a435354173e0bf012b8297ab8918cfd775b4/spacy_pkuseg-0.0.33-cp311-cp311-win_amd64.whl", hash = "sha256:bc255516451c2b05df05dafba4960ad2b7123562833540facb2ee8cb0664313c", size = 2402622, upload-time = "2023-10-01T09:21:53.665Z" },
+    { url = "https://files.pythonhosted.org/packages/65/a9/e2a7c6a9235f941f63945e45d6c406f4171ea96e575f1fa59790b7a33ba1/spacy_pkuseg-0.0.33-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:5be681d0a69ce6db57b16d9b966423eaa55d3c44a7e138fbb120de0b416f6fb3", size = 2464329, upload-time = "2023-10-01T09:21:55.053Z" },
+    { url = "https://files.pythonhosted.org/packages/89/bc/e25d2f7d1f2d9ed99f8d342e4428cefe2ece5b62ab9cba281f804f9be2e6/spacy_pkuseg-0.0.33-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:2dcce14c4f3c920a1bbb5f91bd94422d3c97fe44aaea0eac47392218f5ed18ce", size = 2442190, upload-time = "2023-10-01T09:21:56.368Z" },
+    { url = "https://files.pythonhosted.org/packages/ed/08/6381e855c279dc380e8a38f6388f60ec4c6bc7d5816075fe4fd95a5bde83/spacy_pkuseg-0.0.33-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:079727a4a138da320c766500e7da9d431bbd2468fa3e0453474620978b842f1d", size = 2458330, upload-time = "2023-10-01T09:21:57.887Z" },
+    { url = "https://files.pythonhosted.org/packages/f7/81/dd892c8b8b281ed4ac6cc248c0a7161a8dd3099670d4d87741f13801282d/spacy_pkuseg-0.0.33-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bf266ba8f1826665f08f5b8a83f74f4ae78394e2ed498400c5bd2fbde63556b8", size = 2486751, upload-time = "2023-10-01T09:21:59.982Z" },
+    { url = "https://files.pythonhosted.org/packages/19/c8/d03a14e9b6789802ac3828d47461e4793aed61b46a94b8a67bf4bd6646c8/spacy_pkuseg-0.0.33-cp312-cp312-win_amd64.whl", hash = "sha256:a2082e1c81462ac381ac185282968badbb4daf0eff301bb81bb7f289598c1e73", size = 2398398, upload-time = "2023-10-01T09:22:02.119Z" },
+]
+
+[[package]]
 name = "sqlalchemy"
 version = "2.0.45"
 source = { registry = "https://pypi.org/simple" }
@@ -2008,4 +2037,22 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/17/27/4fe749a54e7fae6e7146f1c7d914d28ef599dacd4416566c055564080fe2/wrapt-1.17.2-cp312-cp312-win32.whl", hash = "sha256:468090021f391fe0056ad3e807e3d9034e0fd01adcd3bdfba977b6fdf4213ea9", size = 36672, upload-time = "2025-01-14T10:34:17.727Z" },
     { url = "https://files.pythonhosted.org/packages/15/06/1dbf478ea45c03e78a6a8c4be4fdc3c3bddea5c8de8a93bc971415e47f0f/wrapt-1.17.2-cp312-cp312-win_amd64.whl", hash = "sha256:ec89ed91f2fa8e3f52ae53cd3cf640d6feff92ba90d62236a81e4e563ac0e991", size = 38865, upload-time = "2025-01-14T10:34:19.577Z" },
     { url = "https://files.pythonhosted.org/packages/2d/82/f56956041adef78f849db6b289b282e72b55ab8045a75abad81898c28d19/wrapt-1.17.2-py3-none-any.whl", hash = "sha256:b18f2d1533a71f069c7f82d524a52599053d4c7166e9dd374ae2136b7f40f7c8", size = 23594, upload-time = "2025-01-14T10:35:44.018Z" },
+]
+
+[[package]]
+name = "zh-core-web-sm"
+version = "3.7.0"
+source = { url = "https://github.com/explosion/spacy-models/releases/download/zh_core_web_sm-3.7.0/zh_core_web_sm-3.7.0-py3-none-any.whl" }
+dependencies = [
+    { name = "spacy" },
+    { name = "spacy-pkuseg" },
+]
+wheels = [
+    { url = "https://github.com/explosion/spacy-models/releases/download/zh_core_web_sm-3.7.0/zh_core_web_sm-3.7.0-py3-none-any.whl", hash = "sha256:f51075665749e07406d629d1055ce5a68635fae6ab3c34257ee798c62b4fc431" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "spacy", specifier = ">=3.7.0,<3.8.0" },
+    { name = "spacy-pkuseg", specifier = ">=0.0.27,<0.1.0" },
 ]

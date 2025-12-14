@@ -32,4 +32,8 @@ dependencies = [
     "azure-cognitiveservices-speech>=1.47.0",
     "fastapi>=0.124.2",
     "python-multipart>=0.0.20",
+    "zh-core-web-sm",
 ]
+
+[tool.uv.sources]
+zh-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/zh_core_web_sm-3.7.0/zh_core_web_sm-3.7.0-py3-none-any.whl" }

@@ -51,6 +51,10 @@ async def submit_answer(
     
     # 4. 生成下一題 (AI)
     question_text = agent_service.generate_question(session_id)
+
+    print(f"========================================")
+    print(f" AI 生成的題目: {question_test}")
+    print(f"========================================")
     
     if not question_text:
         return QuestionResponse(question_text="面試結束，感謝您的參與。", is_end=True)
