@@ -67,6 +67,26 @@ def update_session_history(session_id: str, user_answer: str, next_question: str
     if next_question:
         SessionService.add_history(session_id, next_question, "")
 
+    # 1. 新增關鍵字判斷函式
+def check_voice_command(text: str):
+    """檢查文字中是否包含下一題或退出的指令"""
+    # 移除空格與標點符號方便比對
+    clean_text = text.replace(" ", "").replace("。", "").replace("！", "").replace("？", "")
+    
+    # 定義關鍵字清單
+    exit_keywords = ["退出", "結束面試", "停止面試", "不面試了", "離開"]
+    next_keywords = ["下一題", "跳過", "換一題", "下一個問題", "下一天", "恰一聽", "摘婷", "車題"] # 加入可能聽錯的諧音
+    
+    for kw in exit_keywords:
+        if kw in clean_text:
+            return "EXIT"
+    
+    for kw in next_keywords:
+        if kw in clean_text:
+            return "NEXT"
+    
+    return None
+
 # --- Main Endpoint ---
 
 @router.post("/answer", response_model=QuestionResponse)
@@ -77,10 +97,26 @@ async def submit_answer(
     # 1. 驗證 Session
     validate_session(session_id)
     
-    # 2. 處理音訊 (如果有的話)
+    # 2. 執行 STT (音訊轉文字)
     user_text = process_audio_file(session_id, audio_file)
+    print(f"🎤 使用者說: {user_text}")
+
+    # 3. 🔥【新增】指令判斷邏輯
+    command = check_voice_command(user_text)
+
+    if command == "EXIT":
+        print("🛑 偵測到退出指令")
+        return QuestionResponse(
+            question_text="好的，今天的面試到此結束，辛苦了。",
+            is_end=True 
+        )
+
+    elif command == "NEXT":
+        print("⏭️ 偵測到下一題指令，略過本次回答")
+        # 覆蓋 user_text，讓 AI 知道使用者想換題
+        user_text = "（使用者要求跳過此題，請直接提供下一個不同的面試問題）"
     
-    # 3. AI 生成下一題
+    # 4. AI 生成下一題
     question_text = agent_service.generate_question(session_id)
 
     print(f"========================================")
@@ -90,10 +126,10 @@ async def submit_answer(
     if not question_text:
         return QuestionResponse(question_text="面試結束，感謝您的參與。", is_end=True)
 
-    # 4. 更新歷史紀錄
+    # 5. 更新歷史紀錄
     update_session_history(session_id, user_text, question_text)
 
-    # 5. 回傳結果
+    # 6. 回傳結果
     return QuestionResponse(
         question_text=question_text,
         is_end=False
