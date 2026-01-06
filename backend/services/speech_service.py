@@ -2,6 +2,7 @@
 
 import azure.cognitiveservices.speech as speechsdk
 from backend.config import settings
+import time
 
 class SpeechService:
     def __init__(self):
@@ -25,24 +26,44 @@ class SpeechService:
             audio_config=audio_config
         )
 
-        print(f"正在辨識音檔: {audio_file_path}")
-        try:
-            # 使用 recognize_once_async 進行單次辨識
-            result = speech_recognizer.recognize_once_async().get()
+        done = False
+        all_results = []
 
-            if result.reason == speechsdk.ResultReason.RecognizedSpeech:
-                print(f"STT 結果: {result.text}")
-                return result.text
-            elif result.reason == speechsdk.ResultReason.NoMatch:
-                print("STT 無法辨識語音 (NoMatch)")
-                return ""
-            elif result.reason == speechsdk.ResultReason.Canceled:
-                cancellation = result.cancellation_details
-                print(f"STT 取消: {cancellation.reason}, Error: {cancellation.error_details}")
-                return ""
-        except Exception as e:
-            print(f"STT 發生例外狀況: {e}")
-            return ""
+        def stop_cb(evt):
+            """回呼函式：當辨識結束時觸發"""
+            print(f'CLOSING on {evt}')
+            nonlocal done
+            done = True
+
+        def recognized_cb(evt):
+            """回呼函式：每辨識出一句就觸發"""
+            if evt.result.reason == speechsdk.ResultReason.RecognizedSpeech:
+                print(f'RECOGNIZED: {evt.result.text}')
+                all_results.append(evt.result.text)
+
+        # 連接事件
+        speech_recognizer.recognized.connect(recognized_cb)
+        speech_recognizer.session_stopped.connect(stop_cb)
+        speech_recognizer.canceled.connect(stop_cb)
+
+        print(f"正在辨識音檔 (連續模式): {audio_file_path}")
+        speech_recognizer.start_continuous_recognition()
+
+        # 等待辨識完成 (因為是讀檔案，Azure 會快速讀完)
+        # 這裡用簡單的迴圈等待，配合超時機制避免卡死
+        timeout_sec = 30  
+        start_time = time.time()
+        while not done:
+            time.sleep(0.1)
+            if time.time() - start_time > timeout_sec:
+                print("STT Timeout: 強制停止")
+                break
         
-        return ""
+        # 停止辨識
+        speech_recognizer.stop_continuous_recognition()
+        
+        # 組合所有句子
+        final_text = "".join(all_results)
+        return final_text
+    
     
